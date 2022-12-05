@@ -1,0 +1,112 @@
+﻿@model MVCFinal.Models.Event
+
+@{
+    ViewBag.Title = "DeleteEvent";
+    @RenderPage("~/Views/Event/NavBar.cshtml")
+}
+<style>
+    body {
+        background: #495059;
+    }
+
+    .abc {
+        position: absolute;
+        width: 650px;
+        height: 550px;
+        left: 386px;
+        top: 100px;
+        background: #D9D9D9;
+        border-radius: 25px;
+    }
+
+    h3 {
+        position: absolute;
+        text-align: center;
+    }
+
+  
+
+    .card {
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        transition: 0.3s;
+        margin: auto;
+        margin-top: 200px;
+        border-radius: unset;
+        height: 450px;
+        width: 600px;
+        background-color: cornsilk;
+    }
+    .card:hover {
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+        }
+
+    .container {
+        padding: 2px 20px;
+    }
+
+    img {
+        position: relative;
+        width: 100px;
+        height: 100px;
+        left: 250px;
+        top: 20px;
+    }
+
+    p {
+        text-align: center;
+    }
+
+    .delete {
+        font-size: 30px;
+    }
+
+    .form {
+        margin-top: 10px;
+        margin-left: 180px;
+    }
+
+    .del {
+        width: 100px;
+        height: 33px;
+        font-size: 22px;
+        color: red;
+    }
+
+    .cancel {
+        width: 100px;
+        height: 33px;
+        font-size: 22px;
+        margin-left: 30px;
+    }
+</style>
+
+
+    <p><i class="fa-solid fa-trash-xmark"></i></p>
+    <div class="card">
+        <img src="~/Images/del.png" />
+        <div class="container">
+            <br />
+            <p class="delete"><b>Delete the Event?</b></p>
+
+            <p style="font-size:18px;"><b>Event Name:</b><span>@Html.DisplayFor(model => model.EventName)</span></p>
+
+            <p style="font-size:18px;"><b>Description:</b><span>@Html.DisplayFor(model => model.Description)</span></p>
+
+            <p style="font-size:18px;"><b>Event Date:</b><span>@Html.DisplayFor(model => model.EventDate)</span></p>
+
+            <p style="font-size:18px;"><b>Duration:</b><span>@Html.DisplayFor(model => model.Duration) hrs</span></p>
+
+        </div>
+
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+    <div class="form">
+        <input type="submit" value="Delete" class="del" />
+        <button class="cancel" type="button" onclick="location.href='@Url.Action("GetEventList", "Event")'"> Cancel</button>
+    </div>
+        }
+    </div>
+

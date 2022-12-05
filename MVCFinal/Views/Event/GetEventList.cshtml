@@ -1,0 +1,215 @@
+﻿@model IEnumerable<MVCFinal.Models.Event>
+
+@{
+    ViewBag.Title = "GetEvents";
+    @RenderPage("~/Views/Event/NavBar.cshtml")
+}
+<head>
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+</head>
+
+<style>
+
+    h2 {
+        font-size: 30px;
+        color: #fff;
+        text-transform: uppercase;
+        font-weight: 300;
+        text-align: center;
+        margin-top:100px;
+    }
+
+    table {
+        width: 100%;
+        table-layout: fixed;
+    }
+
+    .tbl-content {
+        height: 300px;
+        overflow-x: auto;
+        margin-top: 0px;
+        border: 1px solid rgba(255,255,255,0.3);
+    }
+
+    th {
+        padding: 20px 15px;
+        text-align: left;
+        font-weight: 500;
+        font-size: 12px;
+        color: #fff;
+        text-transform: uppercase;
+    }
+
+    td {
+        padding: 15px;
+        text-align: left;
+        vertical-align: middle;
+        font-weight: 300;
+        font-size: 12px;
+        color: #fff;
+        border-bottom: solid 1px rgba(255,255,255,0.1);
+    }
+
+
+    body {
+        
+        background:#495059;
+        font-family: 'Roboto', sans-serif;
+    }
+
+    section {
+        margin: 50px;
+    }
+
+
+    /* follow me template */
+    .made-with-love {
+        margin-top: 40px;
+        padding: 10px;
+        clear: left;
+        text-align: center;
+        font-size: 10px;
+        font-family: arial;
+        color: #fff;
+    }
+
+        .made-with-love i {
+            font-style: normal;
+            color: #F50057;
+            font-size: 14px;
+            position: relative;
+            top: 2px;
+        }
+
+        .made-with-love a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+            .made-with-love a:hover {
+                text-decoration: underline;
+            }
+
+    ::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    }
+
+    ::-webkit-scrollbar-thumb {
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    }
+
+    .card {
+        box-shadow: 0 4px 8px 0 rgba(5,0,0,0.6);
+        transition: 0.3s;
+        width: stretch;
+        background-color: cornsilk;
+        border-radius:10px;
+        
+    }
+
+        .card:hover {
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.9);
+        }
+
+    .container {
+        padding: 2px 16px;
+        
+    }
+
+    .edit {
+        width: 90px;
+        height: 40px;
+        margin-left: 790px;
+        margin-top: -130px;
+        float: right;
+        align-content: center;
+        color: White;
+        background-color: #495059;
+        font-size: 17px;
+        border-radius: 5px;
+    }
+    .delete {
+        width: 90px;
+        height: 40px;
+        margin-left: 1350px;
+        margin-top: -80px;
+        float: right;
+        align-content: center;
+     /*   background-color:;*/
+        color:black;
+        font-size: 17px;
+        border-radius:5px;
+    }
+
+        .edit:hover {
+        }
+
+    .fab-container {
+        position: fixed;
+
+        bottom: 20px;
+        right: 50px;
+        z-index: 999;
+        cursor: pointer;
+    }
+
+    .fab-icon-holder {
+        width: 70px;
+        height: 70px;
+        border-radius: 100%;
+        background: #fff;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+    }
+
+        .fab-icon-holder:hover {
+            opacity: 1.0;
+
+        }
+
+        .fab-icon-holder i {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            color: #000;
+        }
+</style>
+<h2>Your Events</h2>
+
+
+@foreach (var item in Model)
+{
+    
+
+    <div class="card">
+        <div class="container">
+            <h4>
+                <b>Event Name: @Html.DisplayFor(modelItem => item.EventName)</b>
+            </h4>
+            <span><b>Description:</b> @Html.DisplayFor(modelItem => item.Description)</span>
+
+            <p><b>Event Date:</b>@Html.DisplayFor(modelItem => item.EventDate) </p>
+
+            <p><b>Duration:</b> @Html.DisplayFor(modelItem => item.Duration) Hrs</p>
+
+            <p><b>Created On:</b> @Html.DisplayFor(modelItem => item.CreatedOn) </p>
+
+            <p><b>Last Updated On:</b> @Html.DisplayFor(modelItem => item.UpdatedOn) </p>
+
+            <button class="edit" onclick="location.href='@Url.Action("EditEvent", "Event", new { eid = item.EventId })'">Edit</button>
+            <button class="delete" onclick="location.href='@Url.Action("DeleteEvent", "Event", new { eid = item.EventId })'">Delete</button>
+        </div>
+    </div>
+    <br />
+}
+<div class="fab-container">
+    <div class="fab-icon-holder">
+        <i class="fa-solid fa-plus" onclick="location.href='@Url.Action("AddEvent", "Event")'"></i>
+    </div>
+</div>
+
+

@@ -1,0 +1,73 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    @RenderPage("~/Views/Event/NavBar.cshtml")
+
+
+}
+
+<title>Home Page</title>
+<html>
+<head>
+    <style>
+        body {
+            background-image: url(../../Images/back.jpg);
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            
+        }
+
+        .name {
+            position:absolute;
+            width: 563px;
+            height: 154px;
+            left: 980px;
+            top: 150px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 128px;
+            line-height: 154px;
+            color: #000000;
+        }
+
+        .tagline {
+            position: fixed;
+            width: 665px;
+            height: 48px;
+            left: 940px;
+            top: 380px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 32px;
+            line-height: 48px;
+            color: #FFFFFF;
+        }
+
+        .view {
+            position: absolute;
+            width: 290px;
+            height: 78px;
+            left: 800px;
+            top: 510px;
+            background: #B3B3B3;
+            font-size: 25px;
+        }
+
+        .add {
+            position: absolute;
+            width: 290px;
+            height: 78px;
+            left: 1230px;
+            top: 510px;
+            background: #B3B3B3;
+            font-size: 25px;
+        }
+    </style>
+</head>
+<p class="name">Evento</p>
+<p class="tagline">Events at your finger tips!!</p>
+<button type="button" class="view" onclick="location.href='@Url.Action("GetEventList", "Event")'"><b>View Events</b></button>
+<button type="button" class="add" onclick="location.href='@Url.Action("AddEvent", "Event")'"><b>Add Events</b></button>
+</html>
